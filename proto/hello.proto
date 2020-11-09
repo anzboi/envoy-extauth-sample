@@ -1,0 +1,23 @@
+syntax = 'proto3';
+
+package hello;
+
+option go_package = "github.com/anzboi/envoy-extauth-sample/pkg/hellopb";
+
+import "google/api/annotations.proto";
+
+service Greeter {
+    rpc GetGreeting(GetGreetingRequest) returns (Greeting) {
+        option (google.api.http) = {
+            get: "/v1/greeting",
+        };
+    };
+}
+
+message GetGreetingRequest {
+    string name = 1;
+}
+
+message Greeting {
+    string message = 1;
+}
